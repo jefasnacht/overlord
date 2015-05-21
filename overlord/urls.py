@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+import overlord_app.urls
 
 urlpatterns = [
+    url(r'^', include(overlord_app.urls)),
     url(r'^overlordapp/', include('overlord_app.urls')),
     url(r'^admin/', include(admin.site.urls)),
     ]
+
+urlpatterns += staticfiles_urlpatterns()
